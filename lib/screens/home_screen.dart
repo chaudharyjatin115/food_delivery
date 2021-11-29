@@ -13,14 +13,12 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Food Delivery'),
-        leading: const Icon(
-          Icons.account_box_rounded,
-        ),
-        actions: [
-          TextButton(onPressed: () {}, child: Text('Cart($User.cart.length)'))
-        ],
-      ),
+          centerTitle: true,
+          title: const Text('Food Delivery'),
+          leading: const Icon(
+            Icons.account_circle,
+          ),
+          actions: <Widget>[TextButton(onPressed: () {}, child: Text)]),
     );
   }
 }
