@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery/widgets/app_bar.dart';
+import 'package:food_delivery/data/data.dart';
+import 'package:food_delivery/screens/cart_screen.dart';
 import 'package:food_delivery/widgets/recent_widgets.dart';
 import 'package:food_delivery/widgets/restaurant_list.dart';
 import 'package:food_delivery/widgets/search_bar.dart';
@@ -15,7 +16,28 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MyAppBar(),
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text('Grocer'),
+        leading: IconButton(
+          onPressed: () {},
+          icon: const CircleAvatar(
+            backgroundImage: AssetImage('assets/images/Avatar-Maker.png'),
+          ),
+        ),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (_) => CartScreen()));
+            },
+            child: Text(
+              'Cart(${currentUser.cart!.length})',
+              style: const TextStyle(color: Colors.white, fontSize: 15.0),
+            ),
+          ),
+        ],
+      ),
       body: ListView(
         children: <Widget>[
           SearchBar(),
