@@ -110,7 +110,8 @@ class _CartScreenState extends State<CartScreen> {
                           )
                         ],
                       ),
-                    )
+                    ),
+                    Text('\$${currentUser.orders![index].food!.price}')
                   ],
                 ),
               ),

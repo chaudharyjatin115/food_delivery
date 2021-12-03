@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:food_delivery/models/restaurant.dart';
 import 'package:food_delivery/widgets/rating.dart';
 

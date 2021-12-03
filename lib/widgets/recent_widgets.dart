@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/data/data.dart';
-import 'package:food_delivery/models/order.dart';
 
 class RecentOrders extends StatelessWidget {
   const RecentOrders({Key? key}) : super(key: key);
@@ -20,10 +19,10 @@ class RecentOrders extends StatelessWidget {
                 fontWeight: FontWeight.w900),
           ),
         ),
-        Container(
+        SizedBox(
           height: 120.0,
           child: ListView.builder(
-            padding: EdgeInsets.only(left: 10.0),
+            padding: const EdgeInsets.only(left: 10.0),
             physics: const BouncingScrollPhysics(),
             scrollDirection: Axis.horizontal,
             itemCount: currentUser.orders!.length,
