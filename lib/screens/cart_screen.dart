@@ -57,50 +57,83 @@ class _CartScreenState extends State<CartScreen> {
                                         fontWeight: FontWeight.bold),
                                   ),
                                   SizedBox(
-                                    height: 10.0,
+                                    height: 8.0,
                                   ),
                                   Text(
-                                    '${currentUser.orders![index].restaurant}',
+                                    '${currentUser.orders![index].restaurant!.name}',
                                     style: TextStyle(
                                         overflow: TextOverflow.ellipsis,
-                                        fontSize: 16.0,
+                                        fontSize: 15.0,
                                         fontWeight: FontWeight.w600),
                                   ),
                                   SizedBox(
-                                    height: 10.0,
+                                    height: 8.0,
                                   ),
                                   Container(
+                                    width: 100,
                                     decoration: BoxDecoration(
                                         borderRadius:
                                             BorderRadius.circular(10.0),
-                                        color: Colors.black,
+                                        color: Theme.of(context)
+                                            .scaffoldBackgroundColor,
                                         border: Border.all(
                                             width: 0.8, color: Colors.black54)),
-                                    width: 100.0,
+                                    height: 20.0,
                                     child: Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: [
-                                        IconButton(
-                                            color:
-                                                Theme.of(context).primaryColor,
-                                            iconSize: 20.0,
-                                            onPressed: () {},
-                                            icon: Icon(Icons.add)),
-                                        SizedBox(
-                                          height: 20.0,
+                                        Text(
+                                          '+',
+                                          style: TextStyle(
+                                              fontSize: 20.0,
+                                              fontWeight: FontWeight.w600),
                                         ),
-                                        Text(currentUser.orders![index].quantity
-                                            .toString()),
                                         SizedBox(
-                                          height: 20.0,
+                                          width: 20.0,
                                         ),
-                                        IconButton(
-                                            color:
-                                                Theme.of(context).primaryColor,
-                                            iconSize: 20.0,
-                                            onPressed: () {},
-                                            icon: Icon(Icons.add)),
+                                        Text(
+                                          currentUser.orders![index].quantity!
+                                              .toString(),
+                                          style: TextStyle(
+                                              fontSize: 20.0,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        SizedBox(
+                                          width: 20.0,
+                                        ),
+                                        Text(
+                                          '-',
+                                          style: TextStyle(
+                                              fontSize: 20.0,
+                                              fontWeight: FontWeight.w600),
+                                        ),
+
+                                        // IconButton(
+                                        //     color:
+                                        //         Theme.of(context).primaryColor,
+                                        //     iconSize: 8.0,
+                                        //     onPressed: () {},
+                                        //     icon: Icon(Icons.add)),
+                                        // SizedBox(
+                                        //   width: 2.0,
+                                        // ),
+                                        // Text(
+                                        //   currentUser.orders![index].quantity
+                                        //       .toString(),
+                                        //   style: TextStyle(fontSize: 10.0),
+                                        // ),
+                                        // SizedBox(
+                                        //   width: 2.0,
+                                        // ),
+                                        // IconButton(
+                                        //     color:
+                                        //         Theme.of(context).primaryColor,
+                                        //     iconSize: 8.0,
+                                        //     onPressed: () {},
+                                        //     icon: Icon(Icons.add)),
                                       ],
                                     ),
                                   )
@@ -111,7 +144,11 @@ class _CartScreenState extends State<CartScreen> {
                         ],
                       ),
                     ),
-                    Text('\$${currentUser.orders![index].food!.price}')
+                    Text(
+                      '\$${currentUser.orders![index].food!.price! * currentUser.orders![index].quantity!.toInt()}',
+                      style: TextStyle(
+                          fontSize: 16.0, fontWeight: FontWeight.bold),
+                    )
                   ],
                 ),
               ),
