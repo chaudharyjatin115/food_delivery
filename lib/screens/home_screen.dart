@@ -28,8 +28,8 @@ class _HomeScreenState extends State<HomeScreen> {
         actions: <Widget>[
           TextButton(
             onPressed: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (_) => CartScreen()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (_) => const CartScreen()));
             },
             child: Text(
               'Cart(${currentUser.cart!.length})',
