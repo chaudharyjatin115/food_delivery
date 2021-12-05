@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
 import 'package:food_delivery/data/data.dart';
+import 'package:food_delivery/models/order.dart';
 
 class CartScreen extends StatefulWidget {
   const CartScreen({Key? key}) : super(key: key);
@@ -12,13 +13,18 @@ class CartScreen extends StatefulWidget {
 class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
+    double totalPrice = 0;
+    currentUser.cart!.forEach((Order order) =>
+        totalPrice += order.quantity! * order.food!.price!.toDouble());
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         title: Text('Cart'),
       ),
       body: ListView.separated(
-          itemBuilder: (BuildContext context, int index) => Container(
+          itemBuilder: (BuildContext context, int index) {
+            if (index < currentUser.cart!.length) {
+              Container(
                 height: 170.0,
                 padding: EdgeInsets.all(20.0),
                 child: Row(
@@ -110,30 +116,6 @@ class _CartScreenState extends State<CartScreen> {
                                               fontSize: 20.0,
                                               fontWeight: FontWeight.w600),
                                         ),
-
-                                        // IconButton(
-                                        //     color:
-                                        //         Theme.of(context).primaryColor,
-                                        //     iconSize: 8.0,
-                                        //     onPressed: () {},
-                                        //     icon: Icon(Icons.add)),
-                                        // SizedBox(
-                                        //   width: 2.0,
-                                        // ),
-                                        // Text(
-                                        //   currentUser.orders![index].quantity
-                                        //       .toString(),
-                                        //   style: TextStyle(fontSize: 10.0),
-                                        // ),
-                                        // SizedBox(
-                                        //   width: 2.0,
-                                        // ),
-                                        // IconButton(
-                                        //     color:
-                                        //         Theme.of(context).primaryColor,
-                                        //     iconSize: 8.0,
-                                        //     onPressed: () {},
-                                        //     icon: Icon(Icons.add)),
                                       ],
                                     ),
                                   )
@@ -151,7 +133,48 @@ class _CartScreenState extends State<CartScreen> {
                     )
                   ],
                 ),
-              ),
+              );
+            }
+            return Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: const [
+                    Text(
+                      'Estimated Delivery Time :',
+                      style: TextStyle(
+                          fontSize: 20.0, fontWeight: FontWeight.w600),
+                    ),
+                    Text(
+                      '25 min',
+                      style: TextStyle(
+                          fontSize: 20.0, fontWeight: FontWeight.w600),
+                    )
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Text(
+                      'Total Cost ',
+                      style: TextStyle(
+                          fontSize: 20.0, fontWeight: FontWeight.w600),
+                    ),
+                    Text(
+                      '\$$totalPrice',
+                      style: TextStyle(
+                          color: Colors.green,
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.w600),
+                    )
+                  ],
+                ),
+                SizedBox(
+                  height: 80.0,
+                )
+              ],
+            );
+          },
           separatorBuilder: (BuildContext context, int index) {
             return const Divider(
               height: 1.0,
@@ -159,6 +182,27 @@ class _CartScreenState extends State<CartScreen> {
             );
           },
           itemCount: currentUser.cart!.length),
+      bottomSheet: Container(
+        child: TextButton(
+            onPressed: () {},
+            child: Text(
+              'CHECKOUT',
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 22.0,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 2.0),
+            )),
+        decoration: BoxDecoration(
+          boxShadow: const [
+            BoxShadow(
+                color: Colors.black26, offset: Offset(0, -1), blurRadius: 6.0),
+          ],
+          color: Theme.of(context).primaryColor,
+        ),
+        height: 100.0,
+        width: MediaQuery.of(context).size.width,
+      ),
     );
   }
 }
