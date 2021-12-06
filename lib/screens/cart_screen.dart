@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
 import 'package:food_delivery/data/data.dart';
-import 'package:food_delivery/models/order.dart';
+import 'package:food_delivery/widgets/checkout_container.dart';
 
 class CartScreen extends StatefulWidget {
   const CartScreen({Key? key}) : super(key: key);
@@ -13,9 +13,6 @@ class CartScreen extends StatefulWidget {
 class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
-    double totalPrice = 0;
-    currentUser.cart!.forEach((Order order) =>
-        totalPrice += order.quantity! * order.food!.price!.toDouble());
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -24,7 +21,7 @@ class _CartScreenState extends State<CartScreen> {
       body: ListView.separated(
           itemBuilder: (BuildContext context, int index) {
             if (index < currentUser.cart!.length) {
-              Container(
+              return Container(
                 height: 170.0,
                 padding: EdgeInsets.all(20.0),
                 child: Row(
@@ -161,7 +158,7 @@ class _CartScreenState extends State<CartScreen> {
                           fontSize: 20.0, fontWeight: FontWeight.w600),
                     ),
                     Text(
-                      '\$$totalPrice',
+                      '25',
                       style: TextStyle(
                           color: Colors.green,
                           fontSize: 20.0,
@@ -182,28 +179,7 @@ class _CartScreenState extends State<CartScreen> {
             );
           },
           itemCount: currentUser.cart!.length),
-      bottomSheet: Container(
-        child: TextButton(
-            onPressed: () {},
-            child: Text(
-              'CHECKOUT',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 22.0,
-                  fontWeight: FontWeight.bold,
-                  letterSpacing: 2.0),
-            )),
-        decoration: BoxDecoration(
-          boxShadow: const [
-            BoxShadow(
-                color: Colors.black26, offset: Offset(0, -1), blurRadius: 6.0),
-          ],
-          color: Theme.of(context).primaryColor,
-        ),
-        height: 100.0,
-        width: MediaQuery.of(context).size.width,
-      ),
+      bottomSheet: checkOutContainer(),
     );
   }
 }
-// 1273214856 id

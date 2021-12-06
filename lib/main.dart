@@ -15,10 +15,22 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Food Delivery app',
       theme: ThemeData(
-        scaffoldBackgroundColor: Colors.grey[50],
+        primaryColor: Colors.red,
+        scaffoldBackgroundColor: Colors.white,
         primarySwatch: Colors.red,
         visualDensity: VisualDensity.adaptivePlatformDensity,
+        brightness: Brightness.light,
+        /* light theme settings */
       ),
+      darkTheme: ThemeData(
+        primaryColor: Colors.red,
+        primarySwatch: Colors.red,
+        scaffoldBackgroundColor: Colors.grey[900],
+        brightness: Brightness.dark,
+
+        /* dark theme settings */
+      ),
+      themeMode: ThemeMode.system,
       home: const LoginScreen(),
     );
   }

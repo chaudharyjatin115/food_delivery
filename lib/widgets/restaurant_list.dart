@@ -24,7 +24,7 @@ class RestaurentBuilder extends StatelessWidget {
             margin:
                 const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: Theme.of(context).scaffoldBackgroundColor,
               borderRadius: BorderRadius.circular(15.0),
               border: Border.all(width: 1.0, color: Colors.grey),
             ),
@@ -35,8 +35,8 @@ class RestaurentBuilder extends StatelessWidget {
                   child: Hero(
                     tag: restaurant,
                     child: Image(
-                      height: 150.0,
-                      width: 150.0,
+                      height: 130.0,
+                      width: 130.0,
                       fit: BoxFit.cover,
                       image: AssetImage('${restaurant.imageUrl}'),
                     ),

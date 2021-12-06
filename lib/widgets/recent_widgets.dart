@@ -30,7 +30,7 @@ class RecentOrders extends StatelessWidget {
               margin: const EdgeInsets.all(10.0),
               width: 320,
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: Theme.of(context).scaffoldBackgroundColor,
                 borderRadius: BorderRadius.circular(15.0),
               ),
               child: Row(
